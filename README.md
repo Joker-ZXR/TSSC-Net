@@ -9,4 +9,4 @@ In this work, we present TSSC-Net, a novel framework that overcomes key challeng
 - We design a spatial consistency enhancement network using residual tri-directional mamba blocks for multi-directional scanning, capturing long-range spatial correlations and correcting cross-slice inconsistencies.
 - Our method delivers outstanding performance: achieving competitive results on ACDC cardiac MRI with minor deformations and significantly improving knee joint MRI with large motions. Notably, TSSC-Net can produce 6× temporal super-resolution in a single inference step.
   
-![image](assets/framework.png)
+![image](assets/model_framework.png)
