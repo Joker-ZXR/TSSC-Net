@@ -1,0 +1,48 @@
+# dataset
+# Knee
+data_path_train: "../datasets/TSSC_Net_data/Input/Knee/imageTr/"
+data_path_test: "../datasets/TSSC_Net_data/Input/Knee/imageTs"
+
+pretrained_vae_model_path: "../ckpts/"
+# save and load
+results_dir: "../Results/runs"
+pretrained:
+resume_from_checkpoint: True
+test_ckpt: ""   # latest_epoch_train_model.pth;   best_epoch_train_model.pth
+test_ckpt_mode: "ema"
+
+# model config:
+gpu_id: "0"
+test_gpu_id: "1"
+cur_date: step-500_aug_slice
+model: MVIF-L/2
+tar_num_frames: 12
+image_size: 256
+diffusion_steps: 500   # sample_step
+learn_sigma: True # important
+train_batch_size: 4 # important
+val_batch_size: 6 # important
+test_batch_size: 1
+
+# train config:
+save_ceph: True # important
+learning_rate: 1e-4
+ckpt_every_iter: 25000
+clip_max_norm: 0.1
+start_clip_iter: 25000
+max_train_steps: 50000
+timestep_respacing_train: ""             # Train sampler
+timestep_respacing_test: "ddim50"         # Val/Test sampler
+val_interval: 50
+global_seed: 3407
+num_workers: 8
+log_every: 100
+lr_warmup_steps: 0
+gradient_accumulation_steps: 1 # TODO
+num_classes: 1
+
+# low VRAM and speed up training
+use_compile: False
+mixed_precision: True
+enable_xformers_memory_efficient_attention: False
+gradient_checkpointing: False
